@@ -4,11 +4,12 @@ import (
 	"encoding/csv"
 	"log"
 	"os"
+	"strings"
 )
 
-func ReadCSV() (data [][]string) {
+func ReadCSV(filepath string) (data [][]string) {
 	// open file
-	f, err := os.Open("./dataset/insurance.csv")
+	f, err := os.Open(filepath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -21,6 +22,13 @@ func ReadCSV() (data [][]string) {
 	data, err = csvReader.ReadAll()
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	// removing the whitespaces
+	for indexRow, row := range data {
+		for indexCol, entry := range row {
+			data[indexRow][indexCol] = strings.TrimSpace(entry)
+		}
 	}
 
 	return

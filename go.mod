@@ -17,6 +17,7 @@ require (
 	github.com/google/flatbuffers v1.11.0 // indirect
 	github.com/mingrammer/commonregex v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1 // indirect
+	github.com/spf13/cast v1.5.0
 	github.com/xtgo/set v1.0.0 // indirect
 	gonum.org/v1/gonum v0.7.0 // indirect
 	gopkg.in/neurosnap/sentences.v1 v1.0.6 // indirect
