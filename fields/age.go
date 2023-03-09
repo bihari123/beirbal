@@ -1,8 +1,6 @@
 package fields
 
 import (
-	"fmt"
-
 	"example.com/utils"
 	"github.com/jdkato/prose/v2"
 )
@@ -48,6 +46,6 @@ var training_statements_age = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldAge(age int) string {
-	return fmt.Sprintf(utils.GetRandomEntry(training_statements_age), age)
+func GetTextForFieldAge(age string) string {
+	return utils.GetRandomEntry(training_statements_age, age)
 }
