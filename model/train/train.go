@@ -9,7 +9,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-func train(filePath, modelName string) {
+func Train(filePath, modelName string) {
 	data, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic(err)

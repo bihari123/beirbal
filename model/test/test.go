@@ -1,4 +1,4 @@
-package model
+package test
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-func test(filepath, modelPath string) {
+func Test(filepath, modelPath string) {
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		panic(err)

@@ -1,6 +1,8 @@
 package train
 
 import (
+	"fmt"
+	"log"
 	"path/filepath"
 
 	"example.com/fields"
@@ -10,11 +12,11 @@ import (
 type (
 	fileName  = string
 	fieldType = int
-	fn        func(string) string
+	fn        func(string) utils.ProdigyOutput
 )
 
 const (
-	nil = iota
+	nilType = iota
 
 	pii_age
 	pfi_us_bank_account_num
@@ -43,23 +45,40 @@ var fieldMap = map[fieldType]fn{
 }
 
 var csvFilemap = map[string][]fieldType{
-	"insurance": {pii_age, pii_sex, pii_bmi, nil, nil, pii_region, pii_money},
+	"insurance.csv": {pii_age, pii_sex, pii_bmi, nilType, nilType, pii_region, pii_money},
 }
 
-func loadRawData() {
+func LoadRawData() {
+	var inputText string
+
 	root := "./dataset"
 
 	files := utils.GetChildFiles(root)
 
 	for _, fileName := range files {
 		if fields, ok := csvFilemap[fileName.Name()]; ok {
-			fileNameWithExt := fileName.Name() + ".csv"
-			data := utils.ReadCSV(filepath.Join(root, fileNameWithExt))
+			data := utils.ReadCSV(filepath.Join(root, fileName.Name()))
 
-			for index, colData := range data {
+			for index, rowData := range data {
 				if index == 0 {
 					continue
 				}
+
+				for index2, colData := range rowData {
+					fieldType := fields[index2]
+					if fieldType == nilType {
+						continue
+					}
+
+					inputText += fieldMap[fieldType](colData).ToString() + "\n"
+				}
+			}
+			pathForTestFile := filepath.Join(root + "/testFile.jsonl")
+			err := utils.WriteAppendFile(pathForTestFile, inputText)
+			if err != nil {
+				log.Fatal("error writing file", err)
+			} else {
+				fmt.Println("file written at ", pathForTestFile)
 			}
 
 		} else {

@@ -1,15 +1,9 @@
 package main
 
-import (
-	"fmt"
-
-	"example.com/utils"
-)
+import "example.com/model/test"
 
 func main() {
-	// test()
-	// utils.ConvertGonToJson()
-	data := utils.ReadCSV()
-
-	fmt.Print(data)
+	// train.LoadRawData()
+	// train.Train("./dataset/testFile.jsonl", "demo_model")
+	test.Test("./dataset/testFile.jsonl", "demo_model")
 }

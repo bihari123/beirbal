@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io"
 
 	"github.com/jdkato/prose/v2"
@@ -13,9 +14,23 @@ import (
 // `LabeledEntity` is a structure defined by prose that specifies where the
 // entities are within the given `Text`.
 type ProdigyOutput struct {
-	Text   string
-	Spans  []prose.LabeledEntity
-	Answer string
+	Text   string                `json:"text"`
+	Spans  []prose.LabeledEntity `json:"spans"`
+	Answer string                `json:"answer"`
+}
+
+/*
+{"text":"This was taken during the Easter celebrations at Real de Catorce, MX.","spans":[{"start":66,"end":68,"label":"PRODUCT","answer":"reject"}]}
+*/
+
+func (p ProdigyOutput) ToString() string {
+	return fmt.Sprintf(
+		"{\"text\":\"%v\",\"spans\":[{\"start\":%v,\"end\":%v,\"label\":\"%v\"}],\"answer\":\"reject\"}",
+		p.Text,
+		p.Spans[0].Start,
+		p.Spans[0].End,
+		p.Spans[0].Label,
+	)
 }
 
 // ReadProdigy reads our JSON Lines file line-by-line, populating a
