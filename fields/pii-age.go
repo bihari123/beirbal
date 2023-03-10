@@ -46,6 +46,6 @@ var training_statements_age = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldAge(age string) string {
+func GetTextForFieldAge(age string) AgeEntry {
 	return utils.GetRandomEntry(training_statements_age, age)
 }

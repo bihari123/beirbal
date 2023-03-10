@@ -144,6 +144,6 @@ var training_statements_CSIN = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldCSIN(csin string) string {
+func GetTextForFieldCSIN(csin string) CSINEntry {
 	return utils.GetRandomEntry(training_statements_CSIN, csin)
 }

@@ -59,6 +59,6 @@ var training_statements_sex = []SexEntry{
 	},
 }
 
-func GetTextForFieldSex(sex string) string {
+func GetTextForFieldSex(sex string) SexEntry {
 	return utils.GetRandomEntry(training_statements_sex, sex)
 }

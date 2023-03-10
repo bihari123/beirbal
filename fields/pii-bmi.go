@@ -26,6 +26,6 @@ var training_statements_bmi = []BmiEntry{
 	},
 }
 
-func GetTextForFieldBMI(bmi string) string {
+func GetTextForFieldBMI(bmi string) BmiEntry {
 	return utils.GetRandomEntry(training_statements_bmi, bmi)
 }

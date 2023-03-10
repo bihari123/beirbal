@@ -52,6 +52,6 @@ var training_statements_money = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldMoney(money string) string {
+func GetTextForFieldMoney(money string) MoneyEntry {
 	return utils.GetRandomEntry(training_statements_money, money)
 }

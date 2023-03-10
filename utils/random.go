@@ -6,7 +6,9 @@ import (
 	"time"
 )
 
-func GetRandomEntry(input []ProdigyOutput, val string) string {
+func GetRandomEntry(input []ProdigyOutput, val string) (output ProdigyOutput) {
 	rand.Seed(time.Now().UnixNano())
-	return fmt.Sprint(input[rand.Intn(len(input))])
+	output = input[rand.Intn(len(input))]
+	output.Text = fmt.Sprintf(output.Text, val)
+	return
 }

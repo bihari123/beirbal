@@ -82,6 +82,6 @@ var training_statements_aadhar = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldAadhar(aadharId string) string {
+func GetTextForFieldAadhar(aadharId string) AadharEntry {
 	return utils.GetRandomEntry(training_statements_aadhar, aadharId)
 }

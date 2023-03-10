@@ -10,16 +10,19 @@ import (
 )
 
 // if isFile is true then it will give only files, else only folders
-func GetDirChildren(filePath string) (filesNFolders []fs.FileInfo) {
+func GetChildFiles(filePath string) (files []fs.FileInfo) {
 	filesNFolders, err := ioutil.ReadDir(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for index, f := range filesNFolders {
+	for _, f := range filesNFolders {
 		if f.IsDir() {
 			// eliminate the folders, only keep the file
-			filesNFolders = append(filesNFolders[:index], filesNFolders[index+1:]...)
+			// filesNFolders = append(filesNFolders[:index], filesNFolders[index+1:]...)
+			continue
+		} else {
+			files = append(files, f)
 		}
 	}
 	return

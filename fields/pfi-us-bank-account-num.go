@@ -312,6 +312,6 @@ var training_statements_us_bank_acc = []USBankAccountEntry{
 	},
 }
 
-func GetTextForFieldUSBankAccount(accNumber string) string {
+func GetTextForFieldUSBankAccount(accNumber string) USBankAccountEntry {
 	return utils.GetRandomEntry(training_statements_us_bank_acc, accNumber)
 }

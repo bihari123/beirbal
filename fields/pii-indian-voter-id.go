@@ -73,6 +73,6 @@ var training_statements_VoterId = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldVoterId(voterId string) string {
+func GetTextForFieldVoterId(voterId string) VoterIdEntry {
 	return utils.GetRandomEntry(training_statements_VoterId, voterId)
 }

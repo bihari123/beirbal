@@ -38,6 +38,6 @@ var training_statements_region = []utils.ProdigyOutput{
 	},
 }
 
-func GetTextForFieldRegion(region string) string {
+func GetTextForFieldRegion(region string) RegionEntry {
 	return utils.GetRandomEntry(training_statements_region, region)
 }
