@@ -3,6 +3,7 @@ package train
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"reflect"
 
 	"example.com/utils"
@@ -51,6 +52,7 @@ func Train(filePath, modelName string) {
 		}
 	}
 	fmt.Printf("Correct (%%): %f\n", correct/float64(len(test)))
+	os.Chdir("./output/model/")
 	model.Write(modelName) // Save the model to disk.
 	// model = onnx.Model
 	// fmt.Print(model)

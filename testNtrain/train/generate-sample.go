@@ -73,7 +73,7 @@ func LoadRawData() {
 					inputText += fieldMap[fieldType](colData).ToString() + "\n"
 				}
 			}
-			pathForTestFile := filepath.Join(root + "/testFile.jsonl")
+			pathForTestFile := filepath.Join("./output/json/testFile.jsonl")
 			err := utils.WriteAppendFile(pathForTestFile, inputText)
 			if err != nil {
 				log.Fatal("error writing file", err)
