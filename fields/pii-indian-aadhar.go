@@ -10,15 +10,15 @@ var AadharLabel = "pii-indian-aadhar"
 type AadharEntry = utils.ProdigyOutput
 
 var sampleTextAadhar = []string{
-	"The indian unique identification for this account is %v",
-	"His indian unique identification for is %v",
-	"Aadhar Card number %v",
-	"Aadhar ID %v",
-	"UDIAI ID %v",
-	"UDAIA number %v",
-	"aadhar# %v",
-	"uid %v",
-	"aadhaar %v",
+	"The indian unique identification for this account is %v ",
+	"His indian unique identification for is %v ",
+	"Aadhar Card number %v ",
+	"Aadhar ID %v ",
+	"UDIAI ID %v ",
+	"UDAIA number %v ",
+	"aadhar# %v ",
+	"uid %v ",
+	"aadhaar %v ",
 	"आधार" + " %v",
 }
 

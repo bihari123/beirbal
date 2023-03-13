@@ -11,10 +11,10 @@ type MoneyEntry = utils.ProdigyOutput
 
 var sampleTextMoney = []string{
 	"He has $%v in his bank account",
-	"He got a policy for $%v",
-	"$%v",
+	"He got a policy for $%v ",
+	"$%v ",
 	"He has $%v in his bank account",
-	"He got a policy for $%v",
+	"He got a policy for $%v ",
 }
 
 // training the money data for 3-7 figures bank amount

@@ -10,12 +10,12 @@ var SexLabel = "pii-sex"
 type SexEntry = utils.ProdigyOutput
 
 var sampleTextSex = []string{
-	"She is a %v",
-	"He is a %v",
-	"His gender is %v",
-	"her gender is %v",
-	"he identifies as a %v",
-	"she identifies as a %v",
+	"She is a %v ",
+	"He is a %v ",
+	"His gender is %v ",
+	"her gender is %v ",
+	"he identifies as a %v ",
+	"she identifies as a %v ",
 }
 
 var training_statements_sex = []SexEntry{

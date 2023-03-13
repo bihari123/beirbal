@@ -10,14 +10,14 @@ var VoterIdLabel = "pii-indian-voter-id"
 type VoterIdEntry = utils.ProdigyOutput
 
 var sampleTextVoterId = []string{
-	"voter %v",
-	"voterid %v",
-	"votercard %v",
-	"voteridcard %v",
-	"electoral photo identity card %v",
-	"EPIC %v",
-	"ECI %v",
-	"election commmision %v",
+	"voter %v ",
+	"voterid %v ",
+	"votercard %v ",
+	"voteridcard %v ",
+	"electoral photo identity card %v ",
+	"EPIC %v ",
+	"ECI %v ",
+	"election commmision %v ",
 }
 
 var training_statements_VoterId = []utils.ProdigyOutput{
