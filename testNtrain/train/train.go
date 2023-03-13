@@ -51,9 +51,15 @@ func Train(filePath, modelName string) {
 			}
 		}
 	}
+
 	fmt.Printf("Correct (%%): %f\n", correct/float64(len(test)))
 	os.Chdir("./output/model/")
+
+	if utils.Exists("./demo_model") {
+		os.RemoveAll("./demo_model")
+	}
 	model.Write(modelName) // Save the model to disk.
 	// model = onnx.Model
 	// fmt.Print(model)
+	os.Chdir("../../")
 }

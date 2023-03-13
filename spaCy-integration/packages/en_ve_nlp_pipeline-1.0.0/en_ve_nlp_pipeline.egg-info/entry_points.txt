@@ -1,0 +1,2 @@
+[spacy_models]
+en_ve_nlp_pipeline = en_ve_nlp_pipeline
