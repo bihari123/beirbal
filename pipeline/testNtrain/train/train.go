@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"example.com/utils"
+	"github.com/bihari123/beirbal/pipeline/utils"
 	"github.com/jdkato/prose/v2"
 )
 

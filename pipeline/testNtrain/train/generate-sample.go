@@ -5,8 +5,8 @@ import (
 	"log"
 	"path/filepath"
 
-	"example.com/fields"
-	"example.com/utils"
+	"github.com/bihari123/beirbal/pipeline/fields"
+	"github.com/bihari123/beirbal/pipeline/utils"
 )
 
 type (

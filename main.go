@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os/exec"
 
-	"example.com/testNtrain/test"
-	"example.com/testNtrain/train"
+	"github.com/bihari123/beirbal/pipeline/testNtrain/test"
+	"github.com/bihari123/beirbal/pipeline/testNtrain/train"
 )
 
 func main() {
@@ -26,6 +26,6 @@ func main() {
 	if err != nil {
 		println(err.Error())
 		return
-	} // os.Chdir("../")
+	}
 	fmt.Println(string(out[:]))
 }
