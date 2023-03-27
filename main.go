@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
+	"github.com/bihari123/beirbal/pipeline/utils"
 	"github.com/jdkato/prose/v2"
 	"github.com/spf13/cast"
 )
 import "C"
 
 // compile the code as:
-// go build -ldflags="-s -w" -buildmode=c-shared -o libgo.dll main.go
-
+// go build -ldflags="-s -w" -
+//
 //export Sum
 func Sum(a, b int) int {
 	return a + b
@@ -112,11 +114,8 @@ func TokeniseThis() {
 	}
 }
 
-func main() {}
-
-/*
 func main() {
-
+	/*
 		os.Chdir("./pipeline")
 		fmt.Println("loading raw data into prodigy json format\n ")
 		train.LoadRawData()
@@ -126,26 +125,27 @@ func main() {
 		fmt.Println("\n\ntraining golang prose lib")
 		train.Train("./output/json/testFile.jsonl", "ve_nlp_model")
 		os.Chdir("../")
-
+	*/
+	/*
 		os.Chdir("./pipeline")
 		fmt.Println("\n\ntesting using in golang prose lib")
 		test.Test("./output/json/testFile.jsonl", "./output/model/ve_nlp_model")
 		os.Chdir("../")
+	*/
 
+	/*
+		fmt.Println("training using spaCy")
 
+		cmd := exec.Command("python3", "./spaCy-integration/ve_nlp_pipeline.py")
 
-	fmt.Println("training using spaCy")
-
-	cmd := exec.Command("python3", "./spaCy-integration/ve_nlp_pipeline.py")
-
-	out, err := cmd.Output()
-	if err != nil {
-		println(err.Error())
-		return
-	}
-	fmt.Println(string(out[:]))
-
-
- fmt.Println(GetLabels("Tarun is a 25 yrs old boy and he has $10000000 in his bank"))
- }
-*/
+		out, err := cmd.Output()
+		if err != nil {
+			println(err.Error())
+			return
+		}
+		fmt.Println(string(out[:]))
+	*/
+	os.Chdir("./pipeline/dataset/pdf")
+	utils.GeneratePdf()
+	os.Chdir("../../../")
+}

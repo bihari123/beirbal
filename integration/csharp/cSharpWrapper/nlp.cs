@@ -6,11 +6,11 @@ public class MainClass
 {
     public struct GoSlice
     {
-        public GoString data;
+        public IntPtr data;
         public long len,
             cap;
 
-        public GoSlice(GoString data, long len, long cap)
+        public GoSlice(IntPtr data, long len, long cap)
         {
             this.data = data;
             this.len = len;
