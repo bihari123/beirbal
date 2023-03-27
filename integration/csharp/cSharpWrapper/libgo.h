@@ -74,7 +74,13 @@ typedef struct { void *data; GoInt len; GoInt cap; } GoSlice;
 extern "C" {
 #endif
 
-extern GoSlice GetLabels(GoString inputText);
+extern GoInt Sum(GoInt a, GoInt b);
+
+// stringtest :
+//
+extern void stringtest(char* name);
+extern char* GetLabels(GoString inputText);
+extern void TokeniseThis();
 
 #ifdef __cplusplus
 }
