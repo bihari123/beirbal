@@ -4,7 +4,7 @@ import (
 	"github.com/bihari123/beirbal/pipeline/utils"
 )
 
-var USDriverLicenseLabel = "pii-indian-voter-id"
+var USDriverLicenseLabel = "PII_US_DRIVER_LICENSE"
 
 type USDriverLicenceEntry = utils.ProdigyOutput
 

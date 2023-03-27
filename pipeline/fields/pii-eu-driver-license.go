@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var EuDriverLicenceLabel = "pii-eu-driver-licence"
+var EuDriverLicenceLabel = "PII_EU_DRIVER_LICENSE"
 
 type EuDriverLicenceEntry = utils.ProdigyOutput
 

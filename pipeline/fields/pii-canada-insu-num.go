@@ -6,7 +6,7 @@ import (
 )
 
 // CSIN = canada social insurance number
-var CSINLabel = "pii-indian-aadhar"
+var CSINLabel = "PII_CAN_SOC_INSU"
 
 type CSINEntry = utils.ProdigyOutput
 

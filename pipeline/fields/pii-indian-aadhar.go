@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var AadharLabel = "pii-indian-aadhar"
+var AadharLabel = "PII_INDIAN_AADHAR"
 
 type AadharEntry = utils.ProdigyOutput
 

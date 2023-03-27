@@ -28,6 +28,8 @@ const (
 	pii_money
 	pii_region
 	pii_sex
+	pfi_us_itin
+	pfi_credit_card
 	// pii_us_driver_license
 )
 
@@ -42,10 +44,24 @@ var fieldMap = map[fieldType]fn{
 	pii_money:           fields.GetTextForFieldMoney,
 	pii_region:          fields.GetTextForFieldRegion,
 	pii_sex:             fields.GetTextForFieldSex,
+	pfi_us_itin:         fields.GetTextForFieldUSItin,
+	pfi_credit_card:     fields.GetTextForFieldCreditCard,
 }
 
 var csvFilemap = map[string][]fieldType{
-	"insurance.csv": {pii_age, pii_sex, pii_bmi, nilType, nilType, pii_region, pii_money},
+	"insurance.csv": {
+		pii_age,
+		pii_sex,
+		pii_bmi,
+		nilType,
+		nilType,
+		pii_region,
+		pii_money,
+	},
+	"Canada-Insu-Number.csv":   {pii_canada_insu_num},
+	"Indian-Aadhar-Number.csv": {pii_indian_aadhar},
+	"credit-card-number.csv":   {pfi_credit_card},
+	"us-taxpayer-itin.csv":     {pfi_us_itin},
 }
 
 func LoadRawData() {
@@ -55,6 +71,7 @@ func LoadRawData() {
 
 	files := utils.GetChildFiles(root)
 
+	pathForTestFile := filepath.Join("./output/json/testFile.jsonl")
 	for _, fileName := range files {
 		if fields, ok := csvFilemap[fileName.Name()]; ok {
 			data := utils.ReadCSV(filepath.Join(root, fileName.Name()))
@@ -73,16 +90,13 @@ func LoadRawData() {
 					inputText += fieldMap[fieldType](colData).ToString() + "\n"
 				}
 			}
-			pathForTestFile := filepath.Join("./output/json/testFile.jsonl")
 			err := utils.WriteAppendFile(pathForTestFile, inputText)
 			if err != nil {
 				log.Fatal("error writing file", err)
-			} else {
-				fmt.Println("file written at ", pathForTestFile)
 			}
-
 		} else {
 			continue
 		}
 	}
+	fmt.Println("file written at ", pathForTestFile)
 }

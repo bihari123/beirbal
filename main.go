@@ -1,11 +1,12 @@
 package main
 
 import (
+	"beirbal/pipeline/testNtrain/test"
+	"beirbal/pipeline/testNtrain/train"
 	"fmt"
 	"os"
 	"strings"
 
-	"github.com/bihari123/beirbal/pipeline/utils"
 	"github.com/jdkato/prose/v2"
 	"github.com/spf13/cast"
 )
@@ -115,23 +116,20 @@ func TokeniseThis() {
 }
 
 func main() {
-	/*
-		os.Chdir("./pipeline")
-		fmt.Println("loading raw data into prodigy json format\n ")
-		train.LoadRawData()
-		os.Chdir("../")
+	os.Chdir("./pipeline")
+	fmt.Println("loading raw data into prodigy json format\n ")
+	train.LoadRawData()
+	os.Chdir("../")
 
-		os.Chdir("./pipeline")
-		fmt.Println("\n\ntraining golang prose lib")
-		train.Train("./output/json/testFile.jsonl", "ve_nlp_model")
-		os.Chdir("../")
-	*/
-	/*
-		os.Chdir("./pipeline")
-		fmt.Println("\n\ntesting using in golang prose lib")
-		test.Test("./output/json/testFile.jsonl", "./output/model/ve_nlp_model")
-		os.Chdir("../")
-	*/
+	os.Chdir("./pipeline")
+	fmt.Println("\n\ntraining golang prose lib")
+	train.Train("./output/json/testFile.jsonl", "ve_nlp_model")
+	os.Chdir("../")
+
+	os.Chdir("./pipeline")
+	fmt.Println("\n\ntesting using in golang prose lib")
+	test.Test("./output/json/testFile.jsonl", "./output/model/ve_nlp_model")
+	os.Chdir("../")
 
 	/*
 		fmt.Println("training using spaCy")
@@ -145,7 +143,11 @@ func main() {
 		}
 		fmt.Println(string(out[:]))
 	*/
-	os.Chdir("./pipeline/dataset/pdf")
-	utils.GeneratePdf()
-	os.Chdir("../../../")
+
+	/*
+		// making a pdf
+		os.Chdir("./pipeline/dataset/pdf")
+		utils.GeneratePdf()
+		os.Chdir("../../../")
+	*/
 }

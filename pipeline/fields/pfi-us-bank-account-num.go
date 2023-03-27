@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var USBankAccountLabel = "PFI-USBAN" // pfi-us-bank-account-number
+var USBankAccountLabel = "PFI_USBAN" // pfi-us-bank-account-number
 
 type USBankAccountEntry = utils.ProdigyOutput
 

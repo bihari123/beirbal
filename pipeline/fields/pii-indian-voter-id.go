@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var VoterIdLabel = "pii-indian-voter-id"
+var VoterIdLabel = "PII_INDIAN_VOTER"
 
 type VoterIdEntry = utils.ProdigyOutput
 
