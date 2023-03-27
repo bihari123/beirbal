@@ -1,6 +1,7 @@
 package train
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -14,6 +15,13 @@ func Train(filePath, modelName string) {
 		panic(err)
 	}
 	train, _ := utils.Split(utils.ReadProdigy(data))
+	i := 0
+	for _, t := range train {
+		if t.Accept {
+			i++
+		}
+	}
+	fmt.Println(i)
 
 	// Here, we're training a new model named PRODUCT with the training portion
 	// of our annotated data.

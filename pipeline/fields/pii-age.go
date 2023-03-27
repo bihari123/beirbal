@@ -5,14 +5,15 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var AgeLabel = "pii-age"
+var AgeLabel = "PII_AGE" //"pii-age"
 
 type AgeEntry = utils.ProdigyOutput
 
 var training_statements_age = []utils.ProdigyOutput{
 	AgeEntry{
-		Text:  "His age is %v years ",
-		Spans: []prose.LabeledEntity{{Start: 11, End: 19, Label: AgeLabel}},
+		Text:   "His age is %v years ",
+		Spans:  []prose.LabeledEntity{{Start: 11, End: 19, Label: AgeLabel}},
+		Answer: utils.GetAnswer(),
 	},
 	AgeEntry{
 		Text:  "His age is %v yrs ",

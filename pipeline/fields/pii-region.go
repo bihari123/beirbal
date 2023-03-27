@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var RegionLabel = "geo-location"
+var RegionLabel = "GEO_LOCATION"
 
 type RegionEntry = utils.ProdigyOutput
 

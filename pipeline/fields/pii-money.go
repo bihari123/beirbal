@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var MoneyLabel = "pii-finance"
+var MoneyLabel = "PFI_FINANCE"
 
 type MoneyEntry = utils.ProdigyOutput
 

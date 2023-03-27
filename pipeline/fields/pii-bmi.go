@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var BmiLabel = "pii-bmi"
+var BmiLabel = "PII_BMI"
 
 type BmiEntry = utils.ProdigyOutput
 

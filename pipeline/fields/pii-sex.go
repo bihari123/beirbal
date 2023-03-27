@@ -5,7 +5,7 @@ import (
 	"github.com/jdkato/prose/v2"
 )
 
-var SexLabel = "pii-sex"
+var SexLabel = "PII_SEX"
 
 type SexEntry = utils.ProdigyOutput
 

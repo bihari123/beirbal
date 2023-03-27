@@ -25,7 +25,7 @@ type ProdigyOutput struct {
 
 func (p ProdigyOutput) ToString() string {
 	return fmt.Sprintf(
-		"{\"text\":\"%v\",\"spans\":[{\"start\":%v,\"end\":%v,\"label\":\"%v\"}],\"answer\":\"reject\"}",
+		"{\"text\":\"%v\",\"spans\":[{\"start\":%v,\"end\":%v,\"label\":\"%v\"}],\"answer\":\"accept\"}",
 		p.Text,
 		p.Spans[0].Start,
 		p.Spans[0].End,
@@ -58,20 +58,42 @@ func ReadProdigy(jsonLines []byte) []ProdigyOutput {
 // We're using an 80-20 split here, although you may want to use a different
 // split.
 func Split(data []ProdigyOutput) ([]prose.EntityContext, []ProdigyOutput) {
-	cutoff := int(float64(len(data)) * 0.8)
-
+	// cutoff := int(float64(len(data)) * 0.8)
+	// fmt.Println("the length is ", len(data), "\nthe cuttoff is ", cutoff)
 	train, test := []prose.EntityContext{}, []ProdigyOutput{}
+	/*
+		for i, entry := range data {
+			if i < cutoff {
+				// fmt.Println("i := ", i)
+				train = append(train, prose.EntityContext{
+					Text:  entry.Text,
+					Spans: entry.Spans,
+					// Accept: entry.Answer == "accept",
+					Accept: true,
+				})
+			} else {
+				test = append(test, entry)
+			}
+		}
+	*/
 	for i, entry := range data {
-		if i < cutoff {
+		// fmt.Println("i := ", i)
+
+		if i%2 == 0 {
 			train = append(train, prose.EntityContext{
-				Text:   entry.Text,
-				Spans:  entry.Spans,
-				Accept: entry.Answer == "accept",
+				Text:  entry.Text,
+				Spans: entry.Spans,
+				// Accept: entry.Answer == "accept",
+				Accept: true,
 			})
 		} else {
-			test = append(test, entry)
+			test = append(test, ProdigyOutput{
+				Text:  entry.Text,
+				Spans: entry.Spans,
+				// Accept: entry.Answer == "accept",
+				Answer: "accept",
+			})
 		}
 	}
-
 	return train, test
 }
