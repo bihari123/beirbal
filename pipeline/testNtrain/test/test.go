@@ -13,7 +13,6 @@ import (
 	"strings"
 )
 
-//export Test
 func Test(filepath, modelPath string) {
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
@@ -90,52 +89,6 @@ func Test(filepath, modelPath string) {
 		}
 	}
 	fmt.Printf("Correct (%%): %f\n", correct/float64(len(test)))
-}
-
-// export GetLabels
-func GetLabels(inputText string) (labels []string) {
-	modelPath := "./output/model/ve_nlp_model"
-	model := prose.ModelFromDisk(modelPath)
-
-	doc, err := prose.NewDocument(
-		inputText,
-		prose.WithSegmentation(false),
-		prose.UsingModel(model),
-	)
-	if err != nil {
-		panic(err)
-	}
-
-	ents := doc.Entities()
-	tokens := doc.Tokens()
-
-	for _, t := range tokens {
-
-		token_label := strings.Split(t.Label, "-")
-		if len(token_label) > 1 {
-
-			label_already_found := false
-
-			for _, ent := range ents {
-				if token_label[1] == ent.Label {
-					label_already_found = true
-				}
-			}
-
-			if !label_already_found {
-				ents = append(ents, prose.Entity{
-					Text:  t.Text,
-					Label: token_label[1],
-				})
-			}
-		}
-	}
-
-	for _, ent := range ents {
-		labels = append(labels, ent.Label)
-	}
-
-	return
 }
 
 // Iterate over the doc's tokens:
