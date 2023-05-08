@@ -2,23 +2,11 @@ package fields
 
 import (
 	"github.com/bihari123/beirbal/pipeline/utils"
-"github.com/ShiraazMoollatjie/goluhn"
 )
 
 var CreditCardLabel = "PFI_CREDIT_CARD"
 
 type CreditCardEntry = utils.ProdigyOutput
-
-/*
-
-Pattern :
-Checksum : Luhn check
-
-*/
-
-func ValidateCreditCardNumber (number string)error{
-	return goluhn.Validate(number)
-}
 
 var sampleTextCreditCard = []string{
 	"card verification %v ",
