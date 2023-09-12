@@ -21,12 +21,14 @@ func GenTrainingStatement(
 	label string,
 ) (trainingStatements []ProdigyOutput) {
 	for _, elem := range inputArr {
+		start := GetStart(elem)
 		trainingStatements = append(trainingStatements, ProdigyOutput{
 			Text: elem,
 			Spans: []prose.LabeledEntity{
 				{
-					Start: GetStart(elem),
+					Start: start,
 					Label: label,
+					End:   GetWholeEntity(elem, start),
 				},
 			},
 			Answer: GetAnswer(),

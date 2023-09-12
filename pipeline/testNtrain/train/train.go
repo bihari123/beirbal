@@ -2,7 +2,6 @@ package train
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	"github.com/bihari123/beirbal/pipeline/utils"
@@ -10,64 +9,32 @@ import (
 )
 
 func Train(filePath, modelName string) {
-	data, err := ioutil.ReadFile(filePath)
+	data, err := os.ReadFile(filePath)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Printf("splitting the data into test and train data\n\n")
 	train, _ := utils.Split(utils.ReadProdigy(data))
+	fmt.Printf("data splitting completed\n\n")
+	fmt.Printf("training started")
 	i := 0
 	for _, t := range train {
 		if t.Accept {
 			i++
 		}
 	}
-	fmt.Println(i)
-
-	// Here, we're training a new model named PRODUCT with the training portion
-	// of our annotated data.
-	//
-	// Depending on your hardware, this should take around 1 - 3 minutes.
+	fmt.Printf("total number of test data: %v \n\n\n", len(train))
 	model := prose.ModelFromData(modelName, prose.UsingEntities(train))
-	/*
-		// Now, let's test our model:
-		correct := 0.0
-		for _, entry := range test {
-			// Create a document without segmentation, which isn't required for NER.
-			doc, err := prose.NewDocument(
-				entry.Text,
-				prose.WithSegmentation(false),
-				prose.UsingModel(model))
-			if err != nil {
-				panic(err)
-			}
-			ents := doc.Entities()
-
-			if entry.Answer != "accept" && len(ents) == 0 {
-				// If we rejected this entity during annotation, prose shouldn't
-				// have labeled it.
-				correct++
-			} else {
-				// Otherwise, we need to verify that we found the correct entities.
-				expected := []string{}
-				for _, span := range entry.Spans {
-					expected = append(expected, entry.Text[span.Start:span.End])
-				}
-				fmt.Printf("Expected: %v Ents: %v\n", expected, ents)
-				if reflect.DeepEqual(expected, ents) {
-					correct++
-				}
-			}
-		}
-
-		fmt.Printf("Correct (%%): %f\n", correct/float64(len(test)))
-	*/
 	os.Chdir("./output/model/")
-
-	if utils.Exists("./demo_model") {
-		os.RemoveAll("./demo_model")
+	fmt.Printf("Model complete.vWriting it on disk\n\n")
+	if utils.Exists(fmt.Sprintf("./%v", modelName)) {
+		os.RemoveAll(fmt.Sprintf("./%v", modelName))
 	}
 	model.Write(modelName) // Save the model to disk.
+	fmt.Printf("Model saved to disk\n\n\n")
 	// model = onnx.Model
 	// fmt.Print(model)
 	os.Chdir("../../")
+	fmt.Printf("training complete\n\n\n")
+
 }

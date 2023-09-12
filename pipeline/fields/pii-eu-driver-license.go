@@ -2,7 +2,6 @@ package fields
 
 import (
 	"github.com/bihari123/beirbal/pipeline/utils"
-	"github.com/jdkato/prose/v2"
 )
 
 var EuDriverLicenceLabel = "PII_EU_DRIVER_LICENSE"
@@ -130,15 +129,11 @@ var sampleTextEuDriverLicence = []string{
 	"dl number %v",
 }
 
-var training_statements_eu_driver_licence = []utils.ProdigyOutput{
-	VoterIdEntry{
-		Text: sampleTextEuDriverLicence[0],
-		Spans: []prose.LabeledEntity{
-			{
-				Start: 5,
-				End:   utils.GetWholeEntity(sampleTextEuDriverLicence[0], 5),
-				Label: CSINLabel,
-			},
-		},
-	},
+var training_statements_eu_driver_license = utils.GenTrainingStatement(
+	sampleTextEuDriverLicence,
+	EuDriverLicenceLabel,
+)
+
+func GetTextForFieldEuDriverLicence(eu_driver_licence string) EuDriverLicenceEntry {
+	return utils.GetRandomEntry(training_statements_eu_driver_license, eu_driver_licence)
 }

@@ -103,3 +103,12 @@ var sampleTextUSDriverLicense = []string{
 	"identification card# %v",
 	"identification cards# %v",
 }
+
+var training_statements_driver_license = utils.GenTrainingStatement(
+	sampleTextUSDriverLicense,
+	USDriverLicenseLabel,
+)
+
+func GetTextForFieldUsDriverLicence(us_driver_licence string) USDriverLicenceEntry {
+	return utils.GetRandomEntry(training_statements_driver_license, us_driver_licence)
+}
